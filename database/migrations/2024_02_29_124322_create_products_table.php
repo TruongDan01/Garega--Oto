@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('description');
             $table->decimal('price', 8, 2);
             $table->unsignedBigInteger('category_id');
-            $table->string('image_url');
             $table->tinyInteger('status');
             $table->integer('orders');
             $table->timestamps();
