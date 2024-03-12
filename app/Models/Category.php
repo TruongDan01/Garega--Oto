@@ -13,6 +13,7 @@ class Category extends Model
         'category_name',
         'image_url',
         'orders',
+        'status',
         'created_at',
         'updated_at',
     ];
