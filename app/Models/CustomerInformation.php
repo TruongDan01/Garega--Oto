@@ -15,6 +15,7 @@ class CustomerInformation extends Model
         'email',
         'phone',
         'address',
+        'status',
         'orders',
         'created_at',
         'updated_at',
