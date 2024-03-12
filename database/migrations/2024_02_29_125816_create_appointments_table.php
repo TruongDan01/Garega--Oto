@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('users');
             $table->datetime('appointment_date');
+            $table->string('notes');
             $table->tinyInteger('status');
             $table->integer('orders');
             $table->timestamps();
