@@ -25,4 +25,20 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public static function getProducts()
+    {
+        return self::select('id', 'name', 'image_url')
+            ->orderBy('category_id')
+            ->orderBy('id')
+            ->get();
+    }
+
+    public static function getByCategory($categoryId)
+    {
+        return self::select('id', 'name', 'image_url', 'price')
+            ->where('category_id', $categoryId)
+            ->orderBy('id')
+            ->get();
+    }
 }
