@@ -21,4 +21,11 @@ class ContactImage extends Model
     {
         return $this->belongsTo(Contact::class, 'contact_id');
     }
+
+    public static function getContactImages()
+    {
+        return self::select('contact_id', 'image_url')
+            ->orderBy('orders')
+            ->get();
+    }
 }
