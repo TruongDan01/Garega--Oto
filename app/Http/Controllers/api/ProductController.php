@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ContactImage;
@@ -24,7 +25,7 @@ class ProductController extends Controller
 
     public function getByCategory($categoryId)
     {
-        $services = Product::getByCategory($categoryId);
+        $services = Category::getProductsByCategory($categoryId);
 
         return response()->json($services);
     }
