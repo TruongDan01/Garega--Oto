@@ -34,11 +34,4 @@ class Product extends Model
             ->get();
     }
 
-    public static function getByCategory($categoryId)
-    {
-        return self::select('id', 'name', 'image_url', 'price')
-            ->where('category_id', $categoryId)
-            ->orderBy('id')
-            ->get();
-    }
 }
