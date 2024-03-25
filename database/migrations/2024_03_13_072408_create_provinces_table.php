@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
-            $table->string('phone_number');
-            $table->unsignedBigInteger('province_id');
-            $table->tinyInteger('status');
-            $table->integer('orders');
             $table->timestamps();
+        });
+
+        Schema::table('branches', function (Blueprint $table) {
+            $table->foreign('province_id')->references('id')->on('provinces')->after('id');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('provinces');
     }
 };
