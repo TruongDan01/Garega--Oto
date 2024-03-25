@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Province;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Contact;
@@ -52,19 +53,33 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Tạo dữ liệu seeder cho bảng branches
+        Province::create([
+            'name' => 'Cần Thơ',
+        ]);
+
+        Province::create([
+            'name' => 'Đồng Tháp',
+        ]);
+
+        Province::create([
+            'name' => 'Vĩnh Long',
+        ]);
+        // Tạo dữ liệu seeder cho bảng branches
         Branch::create([
-            'name' => 'Branch 1',
-            'address' => '123 Main Street',
+            'name' => 'Thiện Minh 1',
+            'address' => 'Nguyễn Văn Cừ nd, Ninh Kiều, Cần Thơ',
             'phone_number' => '123456789',
+            'province_id' => '1',
             'status' => 0, // Role user
             'orders' => 0,
         ]);
 
         Branch::create([
-            'name' => 'Branch 2',
-            'address' => '456 Second Street',
-            'phone_number' => '987654321',
-            'status' => 1, // Role employee
+            'name' => 'Thiện Minh 2',
+            'address' => 'Nguyễn Văn Linh, Ninh Kiều, Cần Thơ',
+            'phone_number' => '123456789',
+            'province_id' => '2',
+            'status' => 0, // Role user
             'orders' => 0,
         ]);
 
@@ -119,26 +134,26 @@ class DatabaseSeeder extends Seeder
 
         // Tạo dữ liệu cho bảng contact_images
         ContactImage::create([
-            'contact_id' => 3,
+            'contact_id' => 1,
             'image_url' => 'https://example.com/image1.jpg',
             'orders' => 1,
         ]);
 
         ContactImage::create([
-            'contact_id' => 3,
+            'contact_id' => 2,
             'image_url' => 'https://example.com/image2.jpg',
             'orders' => 2,
         ]);
 
         // Tạo dữ liệu cho bảng contact_addresses
         ContactAddress::create([
-            'contact_id' => 3,
+            'contact_id' => 2,
             'address' => 'Address 1',
             'orders' => 1,
         ]);
 
         ContactAddress::create([
-            'contact_id' => 3,
+            'contact_id' => 1,
             'address' => 'Address 2',
             'orders' => 1,
         ]);
