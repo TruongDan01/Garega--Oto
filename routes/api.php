@@ -2,11 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\api\ProductController;
-use App\Http\Controllers\api\ContactImageController;
-use App\Http\Controllers\api\AppointmentDatailController;
-use App\Http\Controllers\api\BranchController;
-
+use App\Http\Controllers\api\HomeController;
+use App\Http\Controllers\api\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'home' => ProductController::class,
-    'appointment' => AppointmentDatailController::class,
-    'branch' => BranchController::class,
-    'appointments/create' => BranchController::class,
-
+    'home' => HomeController::class,
+    'services' => ServiceController::class,
 ]);
-
-Route::get('services/{categoryId}', [ProductController::class, 'getByCategory']);
+Route::get('services/category/{serviceType}', [ServiceController::class, 'getServicesByCategory']);

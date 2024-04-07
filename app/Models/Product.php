@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-
+    protected $table = 'products';
     protected $fillable = [
         'name',
         'description',
@@ -21,17 +21,18 @@ class Product extends Model
         'updated_at',
     ];
 
+    public static function getByCategoryId($categoryId)
+    {
+        return self::where('category_id', $categoryId)
+            ->orderBy('id', 'asc')
+            ->take(20)
+            ->select('name', 'image_url', 'price')
+            ->get();
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public static function getProducts()
-    {
-        return self::select('id', 'name', 'image_url')
-            ->orderBy('category_id')
-            ->orderBy('id')
-            ->get();
     }
 
 }
