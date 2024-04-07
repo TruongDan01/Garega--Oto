@@ -32,4 +32,5 @@ Route::apiResources([
 ]);
 Route::get('services/category/{serviceType}', [ServiceController::class, 'getServicesByCategory']);
 Route::get('appointment/create/{branchId}/{userId}', [AppointmentController::class, 'getBranchDetails']);
-Route::post('appointment_detail/', [AppointmentDetailController::class , 'store']);
+Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::get('appointments/{id}', [AppointmentController::class, 'show']);
