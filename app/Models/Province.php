@@ -23,4 +23,10 @@ class Province extends Model
     {
         return $this->hasMany(Branch::class);
     }
+
+    public static function getProvincesWithBranches()
+    {
+        return self::has('branches')->withCount('branches')->get();
+    }
+
 }
