@@ -20,7 +20,12 @@ class Product extends Model
         'created_at',
         'updated_at',
     ];
-
+    public static function getProducts()
+    {
+        return self::take(10)
+            ->select('name', 'image_url', 'price')
+            ->get();
+    }
     public static function getByCategoryId($categoryId)
     {
         return self::where('category_id', $categoryId)
