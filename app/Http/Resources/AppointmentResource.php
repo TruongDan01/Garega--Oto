@@ -7,20 +7,46 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppointmentResource extends JsonResource
 {
-   
+
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
-            'customer_id' => $this->customer_id,
-            'branch_id' => $this->branch_id,
-            'employee_id' => $this->employee_id,
-            'appointment_date' => $this->appointment_id,
+            'customer' => [
+                'name' => $this->customer->name,
+                'email' => $this->customer->email,
+                'phone' => $this->customer->phone,
+                'address' => $this->customer->address,
+            ],
+            'branch' => [
+                'name' => $this->branch->name,
+                'address' => $this->branch->address,
+            ],
+            'employee' => [
+                'name' => $this->employee->name,
+                'phone' => $this->employee->phone,
+                'email' => $this->employee->email,
+            ],
+            'appointment_date' => $this->appointment_date,
             'notes' => $this->notes,
-            'status' => $this->status,
-            'orders' => $this->orders,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'status' => $this->getStatusText(),
         ];
+    }
+
+
+    private function getStatusText(): string
+    {
+        switch ($this->status) {
+            case 0:
+                return 'Hủy bỏ';
+            case 1:
+                return 'Chờ xác nhận';
+            case 2:
+                return 'Đã xác nhận';
+            case 3:
+                return 'Hoàn thành';
+            default:
+                return 'Trạng thái không xác định';
+        }
     }
 }
