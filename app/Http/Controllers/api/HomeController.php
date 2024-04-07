@@ -20,6 +20,6 @@ class HomeController extends Controller
             'products' => ProductResource::collection($products),
             'imagesContact' => ContactImageResource::collection($imagesContact)
         ];
-        return response()->json($data);
+        return $data;
     }
 }
