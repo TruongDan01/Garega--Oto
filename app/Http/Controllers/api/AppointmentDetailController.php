@@ -14,12 +14,7 @@ class AppointmentDetailController extends Controller
 
     public function store(Request $request)
     {
-        $resource = new AppointmentDetailResource($request);
-        $data = $resource->toArray($request);
 
-        $appointmentDetail = AppointmentDetail::create($data);
-
-        return new AppointmentDetailResource($appointmentDetail);
     }
 
 
