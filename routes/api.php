@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\HomeController;
 use App\Http\Controllers\api\ServiceController;
+use App\Http\Controllers\api\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResources([
     'home' => HomeController::class,
     'services' => ServiceController::class,
+    'promotions' => PromotionController::class,
 ]);
 Route::get('services/category/{serviceType}', [ServiceController::class, 'getServicesByCategory']);
+Route::get('promotions', [PromotionController::class, 'index']);
