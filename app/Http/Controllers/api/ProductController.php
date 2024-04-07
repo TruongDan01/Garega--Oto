@@ -27,6 +27,7 @@ class ProductController extends Controller
     {
         $services = Category::getProductsByCategory($categoryId);
 
+        
         return response()->json($services);
     }
 }
