@@ -13,21 +13,25 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::select('category_name', 'image_url')
+        ->get();
+        
         $services = Product::where('category_id', 1)
             ->select('name', 'image_url')
             ->get();
-        $data = [
-            'services' => ProductResource::collection($services),
-            'categories' => CategoryResource::collection($categories)
-        ];
-        return response()->json($data);
+
+        $data = ProductResource::collection([
+            'services' => $services,
+            'categories' => $categories
+        ]);
+
+        return $data;
 
     }
     public function getServicesByCategory(Request $request, $categoryId)
     {
         $services = Product::getByCategoryId($categoryId);
-
-        return response()->json(ProductResource::collection(['services' => $services]), 200);
+        $data = ProductResource::collection(['services' => $services]);
+        return $data;
     }
 }
