@@ -12,11 +12,16 @@ class Appointment extends Model
     protected $table = 'appointments';
 
     protected $fillable = [
+        'id',
         'customer_id',
         'branch_id',
         'employee_id',
         'appointment_date',
         'status',
-        'orders'
+        'orders',
+        'created_at',
+        'updated_at'
     ];
+
+ 
 }

@@ -40,7 +40,7 @@ class BranchResource extends JsonResource
                     'date' => $timeslot->date,
                 ];
             }),
-            
+
         ];
     }
 }
