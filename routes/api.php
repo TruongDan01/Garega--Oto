@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\HomeController;
 use App\Http\Controllers\api\ServiceController;
 use App\Http\Controllers\api\BranchController;
+use App\Http\Controllers\api\ProvinceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,5 @@ Route::apiResources([
 ]);
 Route::get('services/category/{serviceType}', [ServiceController::class, 'getServicesByCategory']);
 Route::get('appointment/create/{branchId}/{userId}', [AppointmentController::class, 'getBranchDetails']);
+Route::get('provinces', [ProvinceController::class, 'showProvinces']);
+Route::get('provinces/{id}', [ProvinceController::class, 'showBranches']);
