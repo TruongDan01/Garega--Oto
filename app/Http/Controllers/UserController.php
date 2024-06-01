@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         $employees = User::where('branch_id', $id)
             ->where('role', 0)
+            ->where('status', 1)
             ->get();
         return UserResource::collection($employees);
     }
