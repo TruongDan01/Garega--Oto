@@ -16,11 +16,10 @@ class AppointmentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'customer_id' => $this->customer_id,
+            'zalo_id' => $this->zalo_id,
             'branch_id' => $this->branch_id,
             'employee_id' => $this->employee_id,
-            'appointment_date' => $this->formatted_date,
-            'notes' => $this->notes,
+            'appointment_date' => $this->appointment_date,
             'status' => $this->status,
         ];
     }
