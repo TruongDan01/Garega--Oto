@@ -13,9 +13,4 @@ class CategoryController extends Controller
     {
         return CategoryResource::collection(Category::all());
     }
-
-    public function show($id)
-    {
-        return new CategoryResource(Category::findOrFail($id));
-    }
 }
