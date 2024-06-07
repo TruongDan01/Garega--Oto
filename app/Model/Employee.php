@@ -9,21 +9,23 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-    protected $table = 'employee_schedules';
+    protected $table = 'employee_transfers';
 
     protected $fillable = [
-      'user_id',
-      'timeslot_id',
-      'date',
+      'id',
+      'employee_id',
+      'branch_id',
+      'status'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function timeslot()
+
+    public function branch()
     {
-        return $this->belongsTo(TimeSlot::class);
+        return $this->belongsTo(Branch::class);
     }
 
 }
