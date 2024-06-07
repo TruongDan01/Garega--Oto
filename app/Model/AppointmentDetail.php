@@ -13,7 +13,12 @@ class AppointmentDetail extends Model
     protected $fillable = [
       'appointment_id',
       'product_id',
-      'qr',
-      ''
+      'time_picker_id',
+      'customer_name',
+      'customer_email',
+      'customer_address',
+      'customer_phone',
+      'customer_note'
     ];
+
 }
