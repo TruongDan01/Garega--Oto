@@ -12,6 +12,7 @@ class Branch extends Model
       'name',
       'address',
       'phone_number',
+      'image',
       'province_id',
       'status'
     ];
