@@ -16,9 +16,10 @@ class CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'category_name' => $this->category_name,
-            'image_url' => $this->image_url,
-            'status' => $this->status == 1 ? 'Hoạt động' : 'Ngưng hoạt động',
+            'name' => $this->name,
+            'image' => $this->image,
+            'status' => $this->status,
+            'orders' => $this->orders
         ];
     }
 }
