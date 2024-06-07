@@ -12,12 +12,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function getAllEmployeeByBranchId($id)
+    public function index()
     {
-        $employees = User::where('branch_id', $id)
-            ->where('role', 0)
+        $staffs = User::where('role', 0)
             ->where('status', 1)
             ->get();
-        return UserResource::collection($employees);
+        return UserResource::collection($staffs);
     }
 }
