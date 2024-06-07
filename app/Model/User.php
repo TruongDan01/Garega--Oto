@@ -15,15 +15,9 @@ class User extends Model
       'email',
       'role',
       'avatar',
-      'branch_id',
       'status',
     ];
     protected $hidden = [
        'password',
     ];
-
-    public function branch()
-    {
-        return $this->belongsTo(Branch::class);
-    }
 }
