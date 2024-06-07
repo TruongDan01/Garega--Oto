@@ -13,9 +13,4 @@ class ProductController extends Controller
     {
         return ProductResource::collection(Product::all());
     }
-
-    public function show($id)
-    {
-        return new ProductResource(Product::findOrFail($id));
-    }
 }
