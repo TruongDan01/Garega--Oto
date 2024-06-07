@@ -20,9 +20,10 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->price,
-            'image_url' => $this->image_url,
+            'image' => $this->image,
             'category_id' => $this->category_id,
-            'status' => $this->status == 1 ? 'Đang hoạt động' : 'Ngừng hoạt động',
+            'status' => $this->status,
+            'orders' => $this->orders,
         ];
     }
 }
