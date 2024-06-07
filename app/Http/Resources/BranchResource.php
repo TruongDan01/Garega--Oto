@@ -19,8 +19,9 @@ class BranchResource extends JsonResource
             'name' => $this->name,
             'address' => $this->address,
             'phone_number' => $this->phone_number,
+            'image' => $this->image,
             'province_id' => $this->province_id,
-            'status' => $this->status == 1 ? 'Hoạt động' : 'Ngưng hoạt động',
+            'status' => $this->status,
         ];
     }
 }
