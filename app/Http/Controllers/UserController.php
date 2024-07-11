@@ -19,7 +19,7 @@ class UserController extends Controller
             ->join('branches', 'employee_transfers.branch_id', '=', 'branches.id')
             ->where('users.role', 0)
             ->where('users.status', 1)
-            ->select('users.id as user_id', 'users.phone', 'users.email', 'users.avatar', 'users.role', 'employee_transfers.status', 'branches.id as branch_id')
+            ->select('employee_transfers.id','users.id as user_id', 'branches.id as branch_id', 'employee_transfers.status')
             ->get();
 
         if ($staffs->isEmpty()) {
