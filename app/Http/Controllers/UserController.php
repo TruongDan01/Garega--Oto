@@ -19,13 +19,13 @@ class UserController extends Controller
             ->join('branches', 'employee_transfers.branch_id', '=', 'branches.id')
             ->where('users.role', 0)
             ->where('users.status', 1)
-            ->select('employee_transfers.id','users.id as user_id', 'branches.id as branch_id', 'employee_transfers.status')
+            ->select('employee_transfers.id','users.id as user_id','users.name', 'users.avatar', 'branches.id as branch_id', 'employee_transfers.status')
             ->get();
 
         if ($staffs->isEmpty()) {
             return response()->json(['error' => 'Lỗi điều kiện'], 404);
         }
 
-        return response()->json($staffs);
+        return UserResource::collection($staffs);
     }
 }
