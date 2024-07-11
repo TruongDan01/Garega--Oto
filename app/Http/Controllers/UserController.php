@@ -14,9 +14,18 @@ class UserController extends Controller
 {
     public function index()
     {
-        $staffs = User::where('role', 0)
-            ->where('status', 1)
+        $staffs = Employee::where('employee_transfers.status', 1)
+            ->join('users', 'employee_transfers.employee_id', '=', 'users.id')
+            ->join('branches', 'employee_transfers.branch_id', '=', 'branches.id')
+            ->where('users.role', 0)
+            ->where('users.status', 1)
+            ->select('users.id as user_id', 'users.phone', 'users.email', 'users.avatar', 'users.role', 'employee_transfers.status', 'branches.id as branch_id')
             ->get();
-        return UserResource::collection($staffs);
+
+        if ($staffs->isEmpty()) {
+            return response()->json(['error' => 'Lỗi điều kiện'], 404);
+        }
+
+        return response()->json($staffs);
     }
 }
