@@ -90,7 +90,7 @@ class AppointmentController extends Controller
 
     public function detail($id)
     {
-        $appointmentDetail = AppointmentDetail::where('appointment_id', $id)->get();
+        $appointmentDetail = AppointmentDetail::where('appointment_id', $id)->with('appointment')->get();
         return AppointmentDetailResource::collection($appointmentDetail);
     }
 
