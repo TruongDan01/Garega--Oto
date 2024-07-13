@@ -16,7 +16,7 @@ class AppointmentDetailResource extends JsonResource
     {
         return [
             'appointment_id' => $this->appointment_id,
-            'product_id' => $this->product_id,
+            'product_id' => json_decode($this->product_id),
             'employee_id' => $this->appointment->employee_id,
             'branch_id' => $this->appointment->branch_id,
             'time_picker_id' => $this->time_picker_id,
