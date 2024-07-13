@@ -21,9 +21,6 @@ class AppointmentDetail extends Model
       'customer_note'
     ];
 
-    protected $casts = [
-        'product_id' => 'array',
-    ];
     public function appointment()
     {
         return $this->belongsTo(Appointment::class);
